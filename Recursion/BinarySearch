@@ -1,0 +1,46 @@
+#include <stdio.h>
+int BinarySearch(int A[], int L, int H, int X);
+
+/********************************************************************************************/
+
+int main()
+{
+    int A[20] = {0}, N, I, X, L = 0, H;
+    printf("Enter The Size Of Array ");
+    scanf("%d", &N);
+    H = N - 1;
+    for (I = 0; I < N; I++)
+    {
+        printf("Enter The Value Of A[%d] ", I);
+        scanf("%d", &A[I]);
+    }
+    printf("Enter The Number To Be Searched ");
+    scanf("%d", &X);
+    BinarySearch(A, L, H, X);
+    printf("%d", BinarySearch(A, L, H, X));
+    return 0;
+}
+
+/********************************************************************************************/
+
+int BinarySearch(int A[], int L, int H, int X)
+{
+    int M;
+    if (L <= H)
+    {
+        M = (L + H) / 2;
+        if (A[M] == X)
+        {
+            return M;
+        }
+        if (X < A[M])
+            return BinarySearch(A, L, M - 1, X);
+        if (X > A[M])
+            return BinarySearch(A, M + 1, H, X);
+        
+    }
+    else
+    {
+            return -1;
+    }
+}
